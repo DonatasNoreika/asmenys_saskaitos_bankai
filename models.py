@@ -14,6 +14,9 @@ class Asmuo(Base):
     asmens_kodas = Column("Asmens kodas", Integer, unique=True)
     el_pastas = Column("El. pašto adresas", String)
 
+    def __repr__(self):
+        return f"{self.id}: {self.vardas} {self.pavarde}, {self.asmens_kodas}, {self.el_pastas}"
+
 class Bankas(Base):
     __tablename__ = "bankas"
     id = Column(Integer, primary_key=True)
@@ -21,6 +24,9 @@ class Bankas(Base):
     adresas = Column("Adresas", String)
     banko_kodas = Column("Banko kodas", Integer)
     swift_kodas = Column("SWIFT kodas", String)
+
+    def __repr__(self):
+        return f"{self.id}: {self.pavadinimas}, {self.adresas}, {self.banko_kodas}, {self.swift_kodas}"
 
 class Saskaita(Base):
     __tablename__ = "saskaita"
