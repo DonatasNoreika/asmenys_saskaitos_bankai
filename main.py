@@ -5,7 +5,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 while True:
-    pasirinkimas = int(input("1 - įveskite vartotoją\n2 - įveskite banką\n3 - įveskite sąskaitą\n"))
+    pasirinkimas = int(input("1 - įveskite vartotoją\n2 - įveskite banką\n3 - įveskite sąskaitą\n4 - įveskite pajamas/išlaidas"))
     if pasirinkimas == 1:
         vardas = input("Įveskite vardą")
         pavarde = input("Įveskite pavardę")
@@ -35,4 +35,13 @@ while True:
         banko_id = int(input("Pasirinkite banko ID"))
         saskaita = Saskaita(numeris=numeris, balansas=balansas, asmuo_id=vartotojo_id, bankas_id=banko_id)
         session.add(saskaita)
+        session.commit()
+    if pasirinkimas == 4:
+        saskaitos = session.query(Saskaita).all()
+        for viena in saskaitos:
+            print(viena)
+        saskaitos_id = int(input("Pasirinkite sąskaitos ID"))
+        pasirinkta_saskaita = session.query(Saskaita).get(saskaitos_id)
+        irasas = float(input("Įveskite pajamas/išlaidas (su -)"))
+        pasirinkta_saskaita.balansas += irasas
         session.commit()

@@ -38,5 +38,8 @@ class Saskaita(Base):
     bankas_id = Column(Integer, ForeignKey('bankas.id'))
     bankas = relationship("Bankas")
 
+    def __repr__(self):
+        return f"{self.id}: {self.numeris}, {self.balansas}, {self.asmuo}, {self.bankas}"
+
 
 Base.metadata.create_all(engine)
