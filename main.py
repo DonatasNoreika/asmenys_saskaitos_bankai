@@ -1,16 +1,16 @@
-# This is a sample Python script.
+from models import engine, Asmuo
+from sqlalchemy.orm import sessionmaker
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+Session = sessionmaker(bind=engine)
+session = Session()
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+while True:
+    pasirinkimas = int(input("1 - įveskite vartotoją\n2 - įveskite banką\n3 - įveskite sąskaitą\n"))
+    if pasirinkimas == 1:
+        vardas = input("Įveskite vardą")
+        pavarde = input("Įveskite pavardę")
+        asmens_kodas = int(input("Įveskite asmens kodą"))
+        el_pastas = input("Įveskite el. pašto adresą")
+        asmuo = Asmuo(vardas=vardas, pavarde=pavarde, asmens_kodas=asmens_kodas, el_pastas=el_pastas)
+        session.add(asmuo)
+        session.commit()

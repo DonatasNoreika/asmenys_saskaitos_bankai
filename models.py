@@ -12,7 +12,7 @@ class Asmuo(Base):
     vardas = Column("Vardas", String)
     pavarde = Column("Pavardė", String)
     asmens_kodas = Column("Asmens kodas", Integer, unique=True)
-    tel_numeris = Column("Telefono numerius", String)
+    el_pastas = Column("El. pašto adresas", String)
 
 class Bankas(Base):
     __tablename__ = "bankas"
